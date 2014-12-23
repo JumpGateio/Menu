@@ -1,0 +1,37 @@
+{
+    "name":        "nukacode/menu",
+    "description": "A simple menu system.",
+    "license":     "MIT",
+    "authors":     [
+        {
+            "name":  "Riddles",
+            "email": "riddles@dev-toolbox.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "~5.0",
+        "illuminate/html": "~5.0",
+        "intervention/image": "2.0.9",
+        "anlutro/curl": "0.6.0",
+        "doctrine/dbal": "2.4.2",
+        "laracasts/presenter": "0.2.0",
+        "laracasts/commander": "1.4.1",
+        "tlr/menu": "3.0.0"
+    },
+    "autoload":    {
+        "classmap": [
+            "src/views"
+        ],
+        "psr-4":    {
+            "NukaCode\\Menu\\": "src/NukaCode/Menu"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            //"php artisan nuka:core-version"
+        ],
+        "post-update-cmd": [
+            //"php artisan nuka:core-version"
+        ]
+    }
+}
