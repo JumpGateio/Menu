@@ -2,8 +2,6 @@
 namespace NukaCode\Menu;
 
 
-use NukaCode\Core\Database\Collection;
-
 class Menu {
 
     private $builder;
@@ -17,13 +15,13 @@ class Menu {
     function __construct(MenuBuilder $menuBuilder)
     {
         $this->builder = $menuBuilder;
-//        $this->links     = new Collection();
-//        $this->dropDowns = new Collection();
     }
 
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     public function addLink($name)
