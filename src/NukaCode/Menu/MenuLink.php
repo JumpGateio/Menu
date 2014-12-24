@@ -16,11 +16,13 @@ class MenuLink {
 
     public  $icon;
 
+    public $restricted = false;
+
     public  $options = [];
 
     public  $active  = false;
 
-    function __construct(Menu $menu)
+    function __construct($menu)
     {
         $this->menu = $menu;
     }
@@ -63,6 +65,15 @@ class MenuLink {
     public function setOptions($options)
     {
         array_merge($this->options, $options);
+
+        return $this;
+    }
+
+    public function setFilter(\Closure $filter)
+    {
+        if ($filter() == false) {
+            $this->restricted = true;
+        }
 
         return $this;
     }

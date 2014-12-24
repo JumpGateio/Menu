@@ -41,7 +41,7 @@ class Menu {
         $dropDown = new MenuDropDown($this);
         $dropDown->setName($name);
 
-        $this->dropDowns->add($dropDown);
+        $this->dropDowns[] = $dropDown;
 
         return $dropDown;
     }
