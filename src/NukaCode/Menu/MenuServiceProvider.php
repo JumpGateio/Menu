@@ -38,10 +38,9 @@ class MenuServiceProvider extends ServiceProvider {
      */
     protected function shareWithApp()
     {
-//        $this->app['menu'] = $this->app->share(function ($app) {
-//            return true;
-//        });
-    }
+        $this->app->singleton( 'menu', function( $app ) {
+            return new MenuService( $app );
+        } );    }
 
     /**
      * Get the services provided by the provider.

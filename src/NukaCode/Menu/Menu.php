@@ -4,17 +4,17 @@ namespace NukaCode\Menu;
 
 class Menu {
 
-    private $builder;
-
     public  $name;
 
     public  $links     = [];
 
     public  $dropDowns = [];
 
-    function __construct(MenuBuilder $menuBuilder)
+    function __construct($menuName)
     {
-        $this->builder = $menuBuilder;
+        if (isset($menuName)) {
+            $this->name = $menuName;
+        }
     }
 
     public function setName($name)
@@ -46,8 +46,6 @@ class Menu {
 
     public function end()
     {
-        return $this->builder;
+        return $this;
     }
-
-
 } 
