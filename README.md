@@ -20,38 +20,38 @@ This class starts building your menu and you just keep method chaining until you
 Right now you have the option to add links and drop downs to your menus.
 
 Example syntax:
-	$menu = new MenuBuilder();
-        $menu->createMenu('leftMenu')
-            ->addLink('Home')
-                ->setRoute('home')
-                ->setPosition(1)
-                ->setIcon('fa-clue')
-                ->setFilter(function (){
-                    return false;
-                })
-                ->end()
-            ->addLink('Member List')
-                ->setRoute('user.memberlist')
-                ->setPosition(2)
-                ->setIcon('fa-user')
-                ->setFilter(function (){
-                    return true;
-                })
-                ->end()
-            ->addDropDown('Admin')
-                ->setRoute('admin.index')
-                ->setPosition(4)
-                ->setIcon('fa-hammer')
-                ->addLink('User Admin')
-                    ->setRoute('admin.user')
-                    ->setPosition(0)
-                    ->setIcon('fa-beer')
-                    ->end()
-                ->addLink('User Admin')
-                    ->setRoute('admin.user')
-                    ->setPosition(0)
-                    ->setIcon('fa-beer')
-                    ->end()
-                ->end()
 
-            ->end();
+    $menu = new MenuBuilder();
+    $menu->createMenu('leftMenu')
+         ->addLink('Home')
+             ->setRoute('home')
+             ->setPosition(1)
+             ->setIcon('fa-clue')
+             ->setFilter(function (){
+                 return false;
+             })
+             ->end()
+         ->addLink('Member List')
+             ->setRoute('user.memberlist')
+             ->setPosition(2)
+             ->setIcon('fa-user')
+             ->setFilter(function (){
+                 return true;
+             })
+             ->end()
+         ->addDropDown('Admin')
+             ->setRoute('admin.index')
+             ->setPosition(4)
+             ->setIcon('fa-hammer')
+             ->addLink('User Admin')
+                 ->setRoute('admin.user')
+                 ->setPosition(0)
+                 ->setIcon('fa-beer')
+                 ->end()
+             ->addLink('User Admin')
+                 ->setRoute('admin.user')
+                 ->setPosition(0)
+                 ->setIcon('fa-beer')
+                 ->end()
+             ->end()
+         ->end();
