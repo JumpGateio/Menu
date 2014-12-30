@@ -4,11 +4,11 @@ namespace NukaCode\Menu;
 
 class MenuLink {
 
-    private $menu;
+    protected $menu;
 
     public  $name;
 
-    public  $route;
+    protected  $route;
 
     public  $url;
 
@@ -29,6 +29,7 @@ class MenuLink {
 
     public function setRoute($route)
     {
+        // set prams
         $this->route = $route;
 
         return $this;
@@ -92,6 +93,17 @@ class MenuLink {
 
     public function end()
     {
+        $this->updateUrl();
+
+        // set active here
+
         return $this->menu;
+    }
+
+    private function updateUrl()
+    {
+        if ($this->route) {
+            $this->url = \URL::route($this->route, [], false);
+        }
     }
 } 

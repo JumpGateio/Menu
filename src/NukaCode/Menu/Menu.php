@@ -26,7 +26,7 @@ class Menu {
     {
         $link = new MenuLink($this);
         $link->setName($name);
-        
+
         return $this->items[] = $link;
     }
 

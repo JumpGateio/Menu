@@ -20,7 +20,7 @@ class MenuServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->package('nukacode/menu');
+//        $this->package('nukacode/menu');
     }
 
     /**
