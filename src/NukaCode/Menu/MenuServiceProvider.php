@@ -42,7 +42,7 @@ class MenuServiceProvider extends ServiceProvider {
     protected function shareWithApp()
     {
         $this->app->singleton( 'menu', function( $app ) {
-            return new MenuContainer( $app );
+            return new MenuContainer();
         } );
     }
 
@@ -72,7 +72,7 @@ class MenuServiceProvider extends ServiceProvider {
      */
     public function provides()
     {
-        return array();
+        return array('menu');
     }
 
 }

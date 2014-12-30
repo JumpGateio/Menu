@@ -6,9 +6,7 @@ class Menu {
 
     public  $name;
 
-    public  $links     = [];
-
-    public  $dropDowns = [];
+    public  $items     = [];
 
     function __construct($menuName)
     {
@@ -28,10 +26,8 @@ class Menu {
     {
         $link = new MenuLink($this);
         $link->setName($name);
-
-        $this->links[] = $link;
-
-        return $link;
+        
+        return $this->items[] = $link;
     }
 
     public function addDropDown($name)
@@ -39,9 +35,7 @@ class Menu {
         $dropDown = new MenuDropDown($this);
         $dropDown->setName($name);
 
-        $this->dropDowns[] = $dropDown;
-
-        return $dropDown;
+        return $this->items[] = $dropDown;
     }
 
     public function end()
@@ -57,22 +51,22 @@ class Menu {
 
     private function removeRestrictedMenus()
     {
-        foreach ($this->links as $linkKey => $linkValue) {
+        foreach ($this->items as $linkKey => $linkValue) {
             if ($linkValue->restricted == true) {
-                unset($this->links[$linkKey]);
+                unset($this->items[$linkKey]);
             }
         }
     }
 
     private function orderLinks()
     {
-        foreach ($this->links as $linkKey => $linkValue) {
+        foreach ($this->items as $linkKey => $linkValue) {
             if ($linkValue->position) {
-                $this->links[$linkValue->position] = $linkValue;
-                unset($this->links[$linkKey]);
+                $this->items[$linkValue->position] = $linkValue;
+                unset($this->items[$linkKey]);
             }
         }
 
-        ksort($this->links);
+        ksort($this->items);
     }
 } 

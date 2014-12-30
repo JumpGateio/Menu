@@ -9,7 +9,7 @@
 namespace NukaCode\Menu;
 
 
-class MenuDropDown extends MenuLink{
+class MenuDropDown extends MenuLink {
 
     public $dropDownOptions = [];
 

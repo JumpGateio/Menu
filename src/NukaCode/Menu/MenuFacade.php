@@ -9,6 +9,9 @@ class MenuFacade extends Facade {
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return '\NukaCode\Menu\MenuContainer'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'menu';
+    }
 
 }

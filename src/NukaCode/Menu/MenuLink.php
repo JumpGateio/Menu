@@ -16,11 +16,11 @@ class MenuLink {
 
     public  $icon;
 
-    public $restricted = false;
+    public  $restricted = false;
 
-    public  $options = [];
+    public  $options    = [];
 
-    public  $active  = false;
+    public  $active     = false;
 
     function __construct($menu)
     {
