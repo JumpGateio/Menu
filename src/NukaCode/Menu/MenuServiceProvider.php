@@ -1,6 +1,8 @@
 <?php namespace NukaCode\Menu;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\AliasLoader;
+
 
 class MenuServiceProvider extends ServiceProvider {
 
@@ -29,6 +31,7 @@ class MenuServiceProvider extends ServiceProvider {
     public function register()
     {
         $this->shareWithApp();
+        $this->registerAliases();
     }
 
     /**
@@ -39,8 +42,28 @@ class MenuServiceProvider extends ServiceProvider {
     protected function shareWithApp()
     {
         $this->app->singleton( 'menu', function( $app ) {
-            return new MenuService( $app );
-        } );    }
+            return new MenuContainer( $app );
+        } );
+    }
+
+    /**
+     * Register aliases
+     *
+     * @return void
+     */
+    protected function registerAliases()
+    {
+        $aliases = [
+            // Facades
+            'Menu'                        => 'NukaCode\Menu\MenuFacade',
+        ];
+
+        $loader     = AliasLoader::getInstance();
+
+        foreach ($aliases as $alias => $class) {
+            $loader->alias($alias, $class);
+        }
+    }
 
     /**
      * Get the services provided by the provider.

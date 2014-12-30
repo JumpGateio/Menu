@@ -46,6 +46,33 @@ class Menu {
 
     public function end()
     {
+        // Remove all menus that failed filters
+        $this->removeRestrictedMenus();
+
+        // Order Links
+        $this->orderLinks();
+
         return $this;
+    }
+
+    private function removeRestrictedMenus()
+    {
+        foreach ($this->links as $linkKey => $linkValue) {
+            if ($linkValue->restricted == true) {
+                unset($this->links[$linkKey]);
+            }
+        }
+    }
+
+    private function orderLinks()
+    {
+        foreach ($this->links as $linkKey => $linkValue) {
+            if ($linkValue->position) {
+                $this->links[$linkValue->position] = $linkValue;
+                unset($this->links[$linkKey]);
+            }
+        }
+
+        ksort($this->links);
     }
 } 
