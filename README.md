@@ -21,9 +21,8 @@ Right now you have the option to add links and drop downs to your menus.
 
 Example syntax:
 
-    $menu = new MenuBuilder();
-    $menu->createMenu('leftMenu')
-         ->addLink('Home')
+    $menu = \Menu::add('leftMenu');
+         $menu->addLink('Home')
              ->setRoute('home')
              ->setPosition(1)
              ->setIcon('fa-clue')
