@@ -4,6 +4,11 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 
 
+/**
+ * Class MenuServiceProvider
+ *
+ * @package NukaCode\Menu
+ */
 class MenuServiceProvider extends ServiceProvider {
 
     /**

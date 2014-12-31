@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * Class MenuFacade
+ *
+ * @package NukaCode\Menu
+ */
 class MenuFacade extends Facade {
 
     /**
