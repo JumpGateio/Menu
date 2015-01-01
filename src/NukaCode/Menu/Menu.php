@@ -1,7 +1,6 @@
 <?php
 namespace NukaCode\Menu;
 
-
 /**
  * Class Menu
  *
@@ -9,133 +8,187 @@ namespace NukaCode\Menu;
  */
 class Menu {
 
-    /**
-     * Name of this menu
-     *
-     * @var
-     */
-    public  $name;
+	/**
+	 * Name of this menu
+	 *
+	 * @var
+	 */
+	public $name;
 
-    /**
-     * The menu links
-     *
-     * @var array
-     */
-    public  $items     = [];
+	/**
+	 * The menu links
+	 *
+	 * @var array
+	 */
+	public $items = [];
 
-    /**
-     * Not sure if i need this.
-     *
-     * @param $menuName
-     */
-    function __construct($menuName)
-    {
-        if (isset($menuName)) {
-            $this->name = $menuName;
-        }
-    }
+	/**
+	 * The next auto assigned position
+	 * Used if no position is supplied
+	 *
+	 * @var int
+	 */
+	public $autoAssignedPosition = 1000;
 
-    /**
-     * Set the menu name.
-     *
-     * @param $name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
+	/**
+	 * Not sure if i need this.
+	 *
+	 * @param $menuName
+	 */
+	function __construct($menuName)
+	{
+		if (isset($menuName)) {
+			$this->name = $menuName;
+		}
+	}
 
-        return $this;
-    }
+	/**
+	 * Set the menu name.
+	 *
+	 * @param $name
+	 *
+	 * @return $this
+	 */
+	public function setName($name)
+	{
+		$this->name = $name;
 
-    /**
-     * Add a link to the menu.
-     *
-     * @param $name
-     *
-     * @return Link
-     */
-    public function addLink($name)
-    {
-        $link = new Link($this);
-        $link->setName($name);
+		return $this;
+	}
 
-        return $this->items[] = $link;
-    }
+	/**
+	 * Add a link to the menu.
+	 *
+	 * @param      $name
+	 * @param null $position
+	 *
+	 * @return Link
+	 */
+	public function addLink($name, $position = null)
+	{
+		$link = new Link($this);
+		$link->setName($name);
+		$link->setPosition($this->getDefaultPosition($position));
 
-    public function quickLink($name, $route, $position = 999, $icon = '', $options = [])
-    {
-        $link = $this->addLink($name);
-        $link->setRoute($route);
-        $link->setPosition($position);
-        $link->setIcon($icon);
-        $link->setOptions($options);
+		return $this->items[] = $link;
+	}
 
-        $link->end();
+	/**
+	 * Sets all the link details at once
+	 *
+	 * @param        $name
+	 * @param        $route
+	 * @param int    $position
+	 * @param string $icon
+	 * @param array  $options
+	 *
+	 * @return $this
+	 */
+	public function quickLink($name, $route, $position = null, $icon = '', $options = [])
+	{
+		$link = $this->addLink($name, $position);
+		$link->setRoute($route);
+		$link->setIcon($icon);
+		$link->setOptions($options);
 
-        return $this;
-    }
+		$link->end();
 
-    /**
-     * Add a dropdown to the menu.
-     *
-     * @param $name
-     *
-     * @return DropDown
-     */
-    public function addDropDown($name)
-    {
-        $dropDown = new DropDown($this);
-        $dropDown->setName($name);
+		return $this;
+	}
 
-        return $this->items[] = $dropDown;
-    }
+	/**
+	 * Add a drop down to the menu.
+	 *
+	 * @param      $name
+	 * @param null $position
+	 *
+	 * @return DropDown
+	 */
+	public function addDropDown($name, $position = null)
+	{
+		$dropDown = new DropDown($this);
+		$dropDown->setName($name);
+		$dropDown->setPosition($this->getDefaultPosition($position));
 
-    /**
-     * Finalize the menu and return it.
-     *
-     * @return $this
-     */
-    public function end()
-    {
-        // Remove all menus that failed filters
-        $this->removeRestrictedMenus();
+		return $this->items[] = $dropDown;
+	}
 
-        // Order Links
-        $this->orderLinks();
+	/**
+	 * Sets all the drop down details at once
+	 *
+	 * @param        $name
+	 * @param        $route
+	 * @param int    $position
+	 * @param string $icon
+	 * @param array  $options
+	 *
+	 * @return DropDown
+	 */
+	public function quickDropDown($name, $route, $position = null, $icon = '', $options = [])
+	{
+		$dropDown = $this->addDropDown($name, $position);
+		$dropDown->setRoute($route);
+		$dropDown->setIcon($icon);
+		$dropDown->setOptions($options);
 
-        return $this;
-    }
+		return $dropDown;
+	}
 
-    /**
-     * Remove any menu with restricted == true
-     *
-     * @return void
-     */
-    private function removeRestrictedMenus()
-    {
-        foreach ($this->items as $linkKey => $linkValue) {
-            if ($linkValue->restricted == true) {
-                unset($this->items[$linkKey]);
-            }
-        }
-    }
+	/**
+	 * Finalize the menu and return it.
+	 *
+	 * @return $this
+	 */
+	public function end()
+	{
+		// Remove all menus that failed filters
+		$this->removeRestrictedMenus();
 
-    /**
-     * Re order links using position.
-     *
-     * @return void
-     */
-    private function orderLinks()
-    {
-        foreach ($this->items as $linkKey => $linkValue) {
-            if ($linkValue->position) {
-                $this->items[$linkValue->position] = $linkValue;
-                unset($this->items[$linkKey]);
-            }
-        }
+		// Order Links
+		$this->orderLinks();
 
-        ksort($this->items);
-    }
+		return $this;
+	}
+
+	/**
+	 * Remove any menu with restricted == true
+	 *
+	 * @return void
+	 */
+	private function removeRestrictedMenus()
+	{
+		foreach ($this->items as $linkKey => $linkValue) {
+			if ($linkValue->restricted == true) {
+				unset($this->items[$linkKey]);
+			}
+		}
+	}
+
+	/**
+	 * Re order links using position.
+	 *
+	 * @return void
+	 */
+	private function orderLinks()
+	{
+		foreach ($this->items as $linkKey => $linkValue) {
+			if ($linkValue->position) {
+				$this->items[$linkValue->position] = $linkValue;
+				unset($this->items[$linkKey]);
+			}
+		}
+
+		ksort($this->items);
+	}
+
+	private function getDefaultPosition($position = null)
+	{
+		if ($position == null) {
+			$position = $this->autoAssignedPosition;
+		}
+
+		$this->autoAssignedPosition += 1000;
+
+		return $position;
+	}
 } 
