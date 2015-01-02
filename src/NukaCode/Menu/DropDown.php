@@ -66,6 +66,31 @@ class DropDown extends Link {
         return $this;
     }
 
+    public function end()
+    {
+        // Order drop down links
+        $this->orderLinks();
+
+        parent::end();
+    }
+
+    /**
+     * Re order links using position.
+     *
+     * @return void
+     */
+    private function orderLinks()
+    {
+        foreach ($this->items as $linkKey => $linkValue) {
+            if ($linkValue->position) {
+                $this->items[$linkValue->position] = $linkValue;
+                unset($this->items[$linkKey]);
+            }
+        }
+
+        ksort($this->items);
+    }
+
     /**
      * Count the number of items
      *
