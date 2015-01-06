@@ -35,7 +35,7 @@ class Menu {
      *
      * @param $menuName
      */
-    function __construct($menuName)
+    function __construct($menuName = null)
     {
         if (isset($menuName)) {
             $this->name = $menuName;
