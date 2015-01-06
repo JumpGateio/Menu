@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "nukacode/core": "dev-develop@dev"
+        "nukacode/core": "dev-develop"
     },
     "autoload":    {
         "classmap": [
@@ -18,5 +18,6 @@
         "psr-4":    {
             "NukaCode\\Menu\\": "src/NukaCode/Menu"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
