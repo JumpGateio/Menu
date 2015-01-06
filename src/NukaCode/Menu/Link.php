@@ -75,7 +75,7 @@ class Link {
     /**
      * @param $menu
      */
-    function __construct($menu)
+    public function __construct($menu)
     {
         $this->menu = $menu;
     }
@@ -170,7 +170,7 @@ class Link {
      * Set the link filter. If the closure returns false
      * then this object will not be returned in the menu.
      *
-     * @param callable $filter
+     * @param \Closure $filter
      *
      * @return $this
      */
