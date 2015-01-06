@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "nukacode/core": "dev-develop"
+        "nukacode/core": "dev-develop@dev"
     },
     "autoload":    {
         "classmap": [
