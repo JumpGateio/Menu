@@ -35,7 +35,7 @@ class Menu {
      *
      * @param $menuName
      */
-    function __construct($menuName = null)
+    public function __construct($menuName = null)
     {
         if (isset($menuName)) {
             $this->name = $menuName;
@@ -59,8 +59,8 @@ class Menu {
     /**
      * Add a link to the menu.
      *
-     * @param      $name
-     * @param null $position
+     * @param              $name
+     * @param integer|null $position
      *
      * @return Link
      */
@@ -76,11 +76,11 @@ class Menu {
     /**
      * Sets all the link details at once
      *
-     * @param        $name
-     * @param        $route
-     * @param int    $position
-     * @param string $icon
-     * @param array  $options
+     * @param              $name
+     * @param              $route
+     * @param integer|null $position
+     * @param string       $icon
+     * @param array        $options
      *
      * @return $this
      */
