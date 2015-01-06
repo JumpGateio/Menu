@@ -27,8 +27,8 @@ class DropDown extends Link {
     /**
      * Add a link to the drop down
      *
-     * @param      $name
-     * @param null $position
+     * @param string       $name
+     * @param integer|null $position
      *
      * @return Link
      */
@@ -46,11 +46,11 @@ class DropDown extends Link {
     /**
      * Sets all the link details at once
      *
-     * @param        $name
-     * @param        $route
-     * @param int    $position
-     * @param string $icon
-     * @param array  $options
+     * @param string       $name
+     * @param string       $route
+     * @param integer|null $position
+     * @param string       $icon
+     * @param array        $options
      *
      * @return $this
      */

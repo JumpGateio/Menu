@@ -210,7 +210,7 @@ class Link {
     /**
      * Finish adding the object and return to the parent.
      *
-     * @return mixed
+     * @return Menu
      */
     public function end()
     {

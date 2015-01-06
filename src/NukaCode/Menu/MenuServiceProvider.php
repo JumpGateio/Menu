@@ -1,8 +1,7 @@
 <?php namespace NukaCode\Menu;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
-
+use Illuminate\Support\ServiceProvider;
 
 /**
  * Class MenuServiceProvider
@@ -46,9 +45,9 @@ class MenuServiceProvider extends ServiceProvider {
      */
     protected function shareWithApp()
     {
-        $this->app->singleton( 'menu', function( $app ) {
+        $this->app->singleton('menu', function () {
             return new MenuContainer();
-        } );
+        });
     }
 
     /**
@@ -60,10 +59,10 @@ class MenuServiceProvider extends ServiceProvider {
     {
         $aliases = [
             // Facades
-            'Menu'                        => 'NukaCode\Menu\MenuFacade',
+            'Menu' => 'NukaCode\Menu\MenuFacade',
         ];
 
-        $loader     = AliasLoader::getInstance();
+        $loader = AliasLoader::getInstance();
 
         foreach ($aliases as $alias => $class) {
             $loader->alias($alias, $class);
@@ -73,11 +72,11 @@ class MenuServiceProvider extends ServiceProvider {
     /**
      * Get the services provided by the provider.
      *
-     * @return array
+     * @return string[]
      */
     public function provides()
     {
-        return array('menu');
+        return ['menu'];
     }
 
 }

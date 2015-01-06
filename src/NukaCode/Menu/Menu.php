@@ -99,8 +99,8 @@ class Menu {
     /**
      * Add a drop down to the menu.
      *
-     * @param      $name
-     * @param null $position
+     * @param              $name
+     * @param integer|null $position
      *
      * @return DropDown
      */
@@ -116,11 +116,11 @@ class Menu {
     /**
      * Sets all the drop down details at once
      *
-     * @param        $name
-     * @param        $route
-     * @param int    $position
-     * @param string $icon
-     * @param array  $options
+     * @param              $name
+     * @param              $route
+     * @param integer|null $position
+     * @param string       $icon
+     * @param array        $options
      *
      * @return DropDown
      */
