@@ -1,6 +1,13 @@
+[![Latest Stable Version](https://poser.pugx.org/nukacode/menu/v/stable.svg)](https://packagist.org/packages/nukacode/menu) [![Total Downloads](https://poser.pugx.org/nukacode/menu/downloads.svg)](https://packagist.org/packages/nukacode/menu) [![Latest Unstable Version](https://poser.pugx.org/nukacode/menu/v/unstable.svg)](https://packagist.org/packages/nukacode/menu) [![License](https://poser.pugx.org/nukacode/menu/license.svg)](https://packagist.org/packages/nukacode/menu)
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/NukaCode/menu/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/NukaCode/menu/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/NukaCode/menu/badges/build.png?b=master)](https://scrutinizer-ci.com/g/NukaCode/menu/build-status/master)
+
+[![Build Status](https://travis-ci.org/NukaCode/menu.svg)](https://travis-ci.org/NukaCode/menu) 
+
 # Menu
 
 This package adds a simple menu system to the nukacode project.
+
 
 ## Installation
 
