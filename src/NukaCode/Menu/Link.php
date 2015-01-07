@@ -73,7 +73,7 @@ class Link {
     public $active;
 
     /**
-     * @param $menu
+     * @param LinkableTrait $menu
      */
     public function __construct($menu)
     {
@@ -84,7 +84,7 @@ class Link {
      * Set the laravel route for this link.
      * Routes will be converted to uri.
      *
-     * @param $route
+     * @param string $route
      *
      * @return $this
      */
@@ -113,7 +113,7 @@ class Link {
     /**
      * Set the name of this link.
      *
-     * @param $name
+     * @param string $name
      *
      * @return $this
      */
@@ -141,7 +141,7 @@ class Link {
     /**
      * Add an icon to this link.
      *
-     * @param $icon
+     * @param string $icon
      *
      * @return $this
      */
