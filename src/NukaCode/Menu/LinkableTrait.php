@@ -9,6 +9,21 @@
 Trait LinkableTrait {
 
     /**
+     * The menu links
+     *
+     * @var array
+     */
+    public $items = [];
+
+    /**
+     * The next auto assigned position
+     * Used if no position is supplied
+     *
+     * @var int
+     */
+    public $autoAssignedPosition = 1000;
+
+    /**
      * Add a link to the menu.
      *
      * @param string       $name
@@ -86,4 +101,68 @@ Trait LinkableTrait {
         return $dropDown;
     }
 
+    /**
+     * Get the default incrementing position.
+     *
+     * @param integer|null $position
+     *
+     * @return integer|null
+     */
+    public function getDefaultPosition($position = null)
+    {
+        if ($position == null) {
+            $position = $this->autoAssignedPosition;
+        }
+
+        $this->autoAssignedPosition += 1000;
+
+        return $position;
+    }
+
+    /**
+     * Re order links using position.
+     *
+     * @return void
+     */
+    public function orderLinks()
+    {
+        foreach ($this->items as $linkKey => $linkValue) {
+            if ($linkValue->position) {
+                $this->items[$linkValue->position] = $linkValue;
+                unset($this->items[$linkKey]);
+            }
+        }
+
+        ksort($this->items);
+    }
+
+    /**
+     * Remove any menu with restricted == true
+     *
+     * @return void
+     */
+    public function removeRestrictedMenus()
+    {
+        foreach ($this->items as $linkKey => $linkValue) {
+            if ($linkValue->restricted == true) {
+                unset($this->items[$linkKey]);
+            }
+        }
+    }
+
+    /**
+     * Finalize the menu and return it.
+     *
+     * @return $this
+     */
+    public function end()
+    {
+        // Remove all menus that failed filters
+        $this->removeRestrictedMenus();
+
+        // Order Links
+        $this->orderLinks();
+
+        return $this;
+    }
 } 

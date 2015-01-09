@@ -1,5 +1,4 @@
-<?php
-namespace NukaCode\Menu;
+<?php namespace NukaCode\Menu;
 
 use Illuminate\Support\Collection;
 

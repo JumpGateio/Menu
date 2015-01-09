@@ -58,7 +58,6 @@ class MenuServiceProvider extends ServiceProvider {
     protected function registerAliases()
     {
         $aliases = [
-            // Facades
             'Menu' => 'NukaCode\Menu\MenuFacade',
         ];
 

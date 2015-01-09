@@ -1,9 +1,7 @@
-<?php
-namespace NukaCode\Menu;
-
+<?php namespace NukaCode\Menu;
 
 /**
- * Class MenuLink
+ * Class Link
  *
  * @package NukaCode\Menu
  */
@@ -240,9 +238,9 @@ class Link {
             $currentUri = \Route::getCurrentRoute()->getUri();
 
             if ($this->url == $currentUri || in_array($currentUri, $this->getChildren())) {
-                $this->active = true;
+                $this->setActive();
             } else {
-                $this->active = false;
+                $this->setActive(false);
             }
         }
     }
