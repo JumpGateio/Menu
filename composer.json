@@ -12,9 +12,6 @@
         "nukacode/core": "dev-develop"
     },
     "autoload":    {
-        "classmap": [
-            "src/views"
-        ],
         "psr-4":    {
             "NukaCode\\Menu\\": "src/NukaCode/Menu"
         }
