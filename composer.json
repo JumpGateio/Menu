@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "nukacode/core": "dev-develop"
+        "nukacode/core": "~2.0"
     },
     "autoload":    {
         "psr-4":    {
