@@ -159,7 +159,7 @@ class Link {
      */
     public function setOptions($options)
     {
-        array_merge($this->options, $options);
+        $this->options = array_merge($this->options, $options);
 
         return $this;
     }
@@ -224,7 +224,7 @@ class Link {
     protected function updateUrl()
     {
         if ($this->route) {
-            $this->url = \URL::route($this->route, [], false);
+            $this->url = $this->getUrl();
         }
     }
 
@@ -235,7 +235,7 @@ class Link {
     protected function checkActive()
     {
         if ($this->active == null) {
-            $currentUri = \Route::getCurrentRoute()->getUri();
+            $currentUri = $this->getRoute();
 
             if ($this->url == $currentUri || in_array($currentUri, $this->getChildren())) {
                 $this->setActive();
@@ -265,5 +265,25 @@ class Link {
     protected function getChildren()
     {
         return [];
+    }
+
+    /**
+     * Get a laravel route url
+     *
+     * @return mixed
+     */
+    protected function getUrl()
+    {
+        return \URL::route($this->route, [], false);
+    }
+
+    /**
+     * Get laravel route uri
+     *
+     * @return mixed
+     */
+    protected function getRoute()
+    {
+        return \Route::getCurrentRoute()->getUri();
     }
 } 

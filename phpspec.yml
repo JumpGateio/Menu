@@ -1,0 +1,14 @@
+suites:
+    barcpde:
+        namespace: NukaCode\Menu
+        spec_path: tests
+extensions:
+    - PhpSpec\Extension\CodeCoverageExtension
+code_coverage:
+    show_uncovered_files: false
+    format:
+        - clover
+        - html
+    output:
+        clover: coverage.xml
+        html: coverage

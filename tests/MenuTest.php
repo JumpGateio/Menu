@@ -1,5 +1,4 @@
-<?php
-namespace nukacode\menu\tests;
+<?php namespace nukacode\menu\tests;
 
 
 use NukaCode\Menu\Menu;
@@ -22,5 +21,4 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 
         $this->assertEquals('testMenu', $menu->name);
     }
-
 } 
