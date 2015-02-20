@@ -17,6 +17,7 @@ Badges
     :target: https://packagist.org/packages/nukacode/menu
 .. image:: https://poser.pugx.org/nukacode/menu/license.svg
     :target: https://packagist.org/packages/nukacode/menu
+=====
 
 Links
 ------
