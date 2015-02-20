@@ -45,6 +45,24 @@ class MenuSpec extends ObjectBehavior {
              ]);
     }
 
+    function it_creates_a_link_and_checks_default_position()
+    {
+        $this->addLink('name')
+            ->shouldHavePropertyWith([
+                'name' => 'position',
+                'data' => 1000
+            ]);
+    }
+
+    function it_creates_a_link_and_checks_position()
+    {
+        $this->addLink('name', 1001)
+             ->shouldHavePropertyWith([
+                 'name' => 'position',
+                 'data' => 1001
+             ]);
+    }
+
     function getMatchers()
     {
         return [
