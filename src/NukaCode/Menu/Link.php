@@ -182,6 +182,16 @@ class Link {
     }
 
     /**
+     * Check if the link is restricted by a filter.
+     * 
+     * @return bool
+     */
+    public function isRestricted()
+    {
+        return $this->restricted;
+    }
+
+    /**
      * Set this link as active.
      *
      * @param bool $bool

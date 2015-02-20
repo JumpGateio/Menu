@@ -45,6 +45,18 @@ class LinkSpec extends ObjectBehavior {
         $this->shouldNotBeActive();
     }
 
+    function it_checks_set_filter_is_false()
+    {
+        $this->setFilter(function(){return true;});
+        $this->shouldNotBeRestricted();
+    }
+
+    function it_checks_set_filter_is_true()
+    {
+        $this->setFilter(function(){return false;});
+        $this->shouldBeRestricted();
+    }
+
     function getMatchers()
     {
         return [
