@@ -26,7 +26,7 @@ class Link {
      *
      * @var string
      */
-    protected $route;
+    public $route;
 
     /**
      * Link url.
@@ -183,7 +183,7 @@ class Link {
 
     /**
      * Check if the link is restricted by a filter.
-     * 
+     *
      * @return bool
      */
     public function isRestricted()
@@ -245,7 +245,7 @@ class Link {
     protected function checkActive()
     {
         if ($this->active == null) {
-            $currentUri = $this->getRoute();
+            $currentUri = $this->getLaravelRoute();
 
             if ($this->url == $currentUri || in_array($currentUri, $this->getChildren())) {
                 $this->setActive();
@@ -292,7 +292,7 @@ class Link {
      *
      * @return mixed
      */
-    protected function getRoute()
+    protected function getLaravelRoute()
     {
         return \Route::getCurrentRoute()->getUri();
     }

@@ -17,20 +17,14 @@ class LinkSpec extends ObjectBehavior {
 
     function it_checks_set_url()
     {
-        $this->setUrl('testUrl')
-            ->shouldHavePropertyWith([
-                'name' => 'url',
-                'data' => 'testUrl'
-            ]);
+        $this->setUrl('testUrl');
+        $this->url->shouldBe('testUrl');
     }
 
     function it_checks_set_icon()
     {
-        $this->setIcon('testIcon')
-             ->shouldHavePropertyWith([
-                 'name' => 'icon',
-                 'data' => 'testIcon'
-             ]);
+        $this->setIcon('testIcon');
+        $this->icon->shouldBe('testIcon');
     }
 
     function it_checks_set_active()
@@ -57,12 +51,22 @@ class LinkSpec extends ObjectBehavior {
         $this->shouldBeRestricted();
     }
 
-    function getMatchers()
+    function it_checks_set_route()
     {
-        return [
-            'havePropertyWith' => function ($subject, $key) {
-                return ($subject->{$key['name']} == $key['data']);
-            }
-        ];
+        $this->setRoute('test.route');
+        $this->route->shouldBe('test.route');
+    }
+
+    function it_checks_set_options()
+    {
+        $this->setOptions(['data' => 'dataOne']);
+
+        $this->options->shouldContain('dataOne');
+        $this->options->shouldHaveKey('data');
+    }
+
+    function it_checks_count()
+    {
+        $this->count()->shouldBe(0);
     }
 }
