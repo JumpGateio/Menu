@@ -15,7 +15,7 @@ class LinkSpec extends ObjectBehavior {
         $this->shouldHaveType('NukaCode\Menu\Link');
     }
 
-    function it_check_set_url()
+    function it_checks_set_url()
     {
         $this->setUrl('testUrl')
             ->shouldHavePropertyWith([
@@ -24,13 +24,25 @@ class LinkSpec extends ObjectBehavior {
             ]);
     }
 
-    function it_check_set_icon()
+    function it_checks_set_icon()
     {
         $this->setIcon('testIcon')
              ->shouldHavePropertyWith([
                  'name' => 'icon',
                  'data' => 'testIcon'
              ]);
+    }
+
+    function it_checks_set_active()
+    {
+        $this->setActive(true);
+        $this->shouldBeActive();
+    }
+
+    function it_checks_not_active()
+    {
+        $this->setActive(false);
+        $this->shouldNotBeActive();
     }
 
     function getMatchers()
