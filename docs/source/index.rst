@@ -24,9 +24,12 @@ Links
 * `GitHub <https://github.com/NukaCode/menu>`_
 * `Packagist <https://packagist.org/packages/nukacode/menu>`_
 
-Installation
-------------
+
+Guides
+------
 .. toctree::
     :maxdepth: 2
 
     install
+    quickStart
+    menu
