@@ -33,3 +33,6 @@ Guides
     install
     quickStart
     menu
+    link
+    dropDown
+    example
