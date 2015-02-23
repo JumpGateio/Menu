@@ -246,6 +246,7 @@ class Link {
     {
         if ($this->active == null) {
             $currentUri = $this->getLaravelRoute();
+            $currentUri = strlen($currentUri) == 1 ? $currentUri : '/'. $currentUri;
 
             if ($this->url == $currentUri || in_array($currentUri, $this->getChildren())) {
                 $this->setActive();
