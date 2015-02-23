@@ -10,6 +10,10 @@ use Illuminate\Support\ServiceProvider;
  */
 class MenuServiceProvider extends ServiceProvider {
 
+    const NAME    = 'menu';
+    const VERSION = '0.2.6';
+    const DOCS    = 'menu';
+
     /**
      * Indicates if loading of the provider is deferred.
      *
