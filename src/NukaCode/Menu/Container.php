@@ -125,6 +125,16 @@ class Container extends Collection {
     }
 
     /**
+     * Get the active link by slug.
+     *
+     * @return string
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
      * Set the active link by slug.
      *
      * @param $slug
@@ -141,23 +151,23 @@ class Container extends Collection {
      */
     private function updateActive()
     {
-        foreach ($this->items as $item) {
+        $this->each(function ($item) {
             if (isset($item->links)) {
-                foreach ($item->links as $link) {
+                $item->links->each(function ($link) {
                     if ($link->slug == $this->active) {
                         $link->setActive(true);
                     }
 
                     if (isset($link->links)) {
-                        foreach ($link->links as $subLink) {
+                        $link->links->each(function ($subLink) use ($link) {
                             if ($subLink->slug == $this->active) {
                                 $link->setActive(true);
                                 $subLink->setActive(true);
                             }
-                        }
+                        });
                     }
-                }
+                });
             }
-        }
+        });
     }
 } 

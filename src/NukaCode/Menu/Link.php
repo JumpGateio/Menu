@@ -41,13 +41,6 @@ class Link {
     public $url;
 
     /**
-     * Position to display the link
-     *
-     * @var int
-     */
-    public $position;
-
-    /**
      * Additional options for links
      *
      * @var array
@@ -70,6 +63,11 @@ class Link {
         return false;
     }
 
+    /**
+     * Check if the current object is a drop down
+     *
+     * @return false
+     */
     public function isDropDown()
     {
         return false;

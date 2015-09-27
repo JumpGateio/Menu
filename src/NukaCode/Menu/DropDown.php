@@ -47,11 +47,21 @@ class DropDown {
         }
     }
 
+    /**
+     * Check if the current object is a drop down
+     *
+     * @return true
+     */
     public function isDropDown()
     {
         return true;
     }
 
+    /**
+     * Check if the dropdown has links
+     *
+     * @return bool
+     */
     public function hasLinks()
     {
         if (count($this->links) > 0) {
