@@ -16,19 +16,12 @@ class DropDown {
     use Insertable;
 
     /**
-     * Parent menu object
-     *
-     * @var Menu
-     */
-    public $menu;
-
-    /**
-     * @var
+     * @var string
      */
     public $slug;
 
     /**
-     * @var The|null
+     * @var string|null
      */
     public $name;
 
@@ -50,7 +43,7 @@ class DropDown {
     /**
      * Check if the current object is a drop down
      *
-     * @return true
+     * @return bool
      */
     public function isDropDown()
     {
@@ -64,10 +57,6 @@ class DropDown {
      */
     public function hasLinks()
     {
-        if (count($this->links) > 0) {
-            return true;
-        }
-
-        return false;
+        return (count($this->links) > 0);
     }
 }

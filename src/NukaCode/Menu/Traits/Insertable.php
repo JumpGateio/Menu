@@ -21,24 +21,7 @@ trait Insertable {
      */
     public function insertAfter($slug)
     {
-
-        $this->insert = true;
-
-        foreach ($this->menu->links as $linkKey => $link) {
-            if ($link->isDropdown()) {
-                foreach ($link->links as $subLinkKey => $subLink) {
-                    if ($subLink->slug == $slug) {
-                        $link->links->splice($subLinkKey + 1, 0, [$this]);
-                    }
-
-                }
-            } else {
-                if ($link->slug == $slug) {
-                    $this->menu->links->splice($linkKey + 1, 0, [$this]);
-                }
-            }
-        }
-
+        $this->insertObject($slug, true);
     }
 
     /**
@@ -48,19 +31,36 @@ trait Insertable {
      */
     public function insertBefore($slug)
     {
+        $this->insertObject($slug);
+    }
+
+    /**
+     * @param $slug
+     * @param $after
+     */
+    private function insertObject($slug, $after = false)
+    {
         $this->insert = true;
 
         foreach ($this->menu->links as $linkKey => $link) {
             if ($link->isDropdown()) {
                 foreach ($link->links as $subLinkKey => $subLink) {
                     if ($subLink->slug == $slug) {
-                        $link->links->splice($subLinkKey, 0, [$this]);
+                        if ($after) {
+                            $link->links->splice($subLinkKey + 1, 0, [$this]);
+                        } else {
+                            $link->links->splice($subLinkKey, 0, [$this]);
+                        }
                     }
 
                 }
             } else {
                 if ($link->slug == $slug) {
-                    $this->menu->links->splice($linkKey, 0, [$this]);
+                    if ($after) {
+                        $this->menu->links->splice($linkKey + 1, 0, [$this]);
+                    } else {
+                        $this->menu->links->splice($linkKey, 0, [$this]);
+                    }
                 }
             }
         }

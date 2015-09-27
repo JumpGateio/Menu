@@ -55,11 +55,7 @@ class Container extends Collection {
      */
     public function exists($menuName)
     {
-        if ($this->getMenuObject($menuName)) {
-            return true;
-        }
-
-        return false;
+        return (bool) $this->getMenuObject($menuName);
     }
 
     /**
@@ -71,11 +67,7 @@ class Container extends Collection {
      */
     public function hasLinks($menuName)
     {
-        if (count($this->getMenuObject($menuName)->links) > 0) {
-            return true;
-        }
-
-        return false;
+        return (count($this->getMenuObject($menuName)->links) > 0);
     }
 
     /**

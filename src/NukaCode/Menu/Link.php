@@ -13,13 +13,6 @@ class Link {
     use Activate;
 
     /**
-     * Parent menu object
-     *
-     * @var Menu
-     */
-    public $menu;
-
-    /**
      * The link slug
      *
      * @var string
@@ -66,7 +59,7 @@ class Link {
     /**
      * Check if the current object is a drop down
      *
-     * @return false
+     * @return bool
      */
     public function isDropDown()
     {

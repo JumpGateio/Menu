@@ -18,13 +18,13 @@ class MenuMiddleware {
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure                 $next
-     * @param  string                   $active
+     * @param  string|null              $active
      *
      * @return mixed
      */
     public function handle($request, Closure $next, $active = null)
     {
-        if ($active) {
+        if ($active !== null) {
             // Laravel 5.1 [middleware => menu:slug]
             \Menu::setActive($active);
         } else {
