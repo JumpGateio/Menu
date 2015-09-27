@@ -1,46 +1,73 @@
 <?php namespace NukaCode\Menu;
 
+use Illuminate\Support\Collection;
+use NukaCode\Menu\Traits\Activate;
+use NukaCode\Menu\Traits\Insertable;
+use NukaCode\Menu\Traits\Linkable;
+
 /**
  * Class DropDown
  *
  * @package NukaCode\Menu
  */
-class DropDown extends Link {
-    use LinkableTrait;
+class DropDown {
+    use Linkable;
+    use Activate;
+    use Insertable;
 
     /**
-     * Count the number of items
+     * Parent menu object
      *
-     * @return int
+     * @var Menu
      */
-    public function count()
+    public $menu;
+
+    /**
+     * @var
+     */
+    public $slug;
+
+    /**
+     * @var The|null
+     */
+    public $name;
+
+
+    /**
+     * Construct a menu
+     *
+     * @param $dropDownName The name of the drop down
+     */
+    public function __construct($dropDownName = null)
     {
-        return count($this->items);
+        $this->links = new Collection();
+
+        if (isset($dropDownName)) {
+            $this->name = $dropDownName;
+        }
     }
 
     /**
-     * Get the items for this object
+     * Check if the current object is a drop down
      *
-     * @return array
+     * @return true
      */
-    protected function getChildren()
+    public function isDropDown()
     {
-        return array_fetch($this->items, 'url');
+        return true;
     }
 
     /**
-     * Finalize the menu and return it.
+     * Check if the dropdown has links
      *
-     * @return $this
+     * @return bool
      */
-    public function end()
+    public function hasLinks()
     {
-        // Remove all menus that failed filters
-        $this->removeRestrictedMenus();
+        if (count($this->links) > 0) {
+            return true;
+        }
 
-        // Order Links
-        $this->orderLinks();
-
-        return $this->menu;
+        return false;
     }
-} 
+}

@@ -8,5 +8,5 @@ This Class also implements the linkable trait so it has access to all the link a
 
 Check if the drop down has links
 --------------------------------
-You can call the ``count()`` method on the drop down class to see if there are any links
+You can call the ``hasLinks()`` method on the drop down class to see if there are any links
 This is to allow you to run a foreach if there are links present. Otherwise treat it as a normal link.

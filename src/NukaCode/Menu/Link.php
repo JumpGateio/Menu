@@ -1,18 +1,30 @@
 <?php namespace NukaCode\Menu;
 
+use NukaCode\Menu\Traits\Activate;
+use NukaCode\Menu\Traits\Insertable;
+
 /**
  * Class Link
  *
  * @package NukaCode\Menu
  */
 class Link {
+    use Insertable;
+    use Activate;
 
     /**
      * Parent menu object
      *
      * @var Menu
      */
-    protected $menu;
+    public $menu;
+
+    /**
+     * The link slug
+     *
+     * @var string
+     */
+    public $slug;
 
     /**
      * Name of the link
@@ -22,39 +34,11 @@ class Link {
     public $name;
 
     /**
-     * Link route.
-     *
-     * @var string
-     */
-    public $route;
-
-    /**
-     * Link url.
+     * Link url
      *
      * @var string
      */
     public $url;
-
-    /**
-     * Position to display the link
-     *
-     * @var int
-     */
-    public $position;
-
-    /**
-     * Icon to use for this link
-     *
-     * @var string
-     */
-    public $icon;
-
-    /**
-     * If true then this object will be removed from the menu.
-     *
-     * @var bool
-     */
-    public $restricted = false;
 
     /**
      * Additional options for links
@@ -64,237 +48,28 @@ class Link {
     public $options = [];
 
     /**
-     * Is the link active.
+     * Get a menu option
      *
-     * @var bool
+     * @param $name The name of the menu option
+     *
+     * @return string|bool Return the menu option if it exists or false.
      */
-    public $active;
-
-    /**
-     * @param LinkableTrait $menu
-     */
-    public function __construct($menu)
+    public function getOption($name)
     {
-        $this->menu = $menu;
-    }
-
-    /**
-     * Set the laravel route for this link.
-     * Routes will be converted to uri.
-     *
-     * @param string $route
-     *
-     * @return $this
-     */
-    public function setRoute($route)
-    {
-        // set prams
-        $this->route = $route;
-
-        return $this;
-    }
-
-    /**
-     * Manually set the url for this link.
-     *
-     * @param $url
-     *
-     * @return $this
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Set the name of this link.
-     *
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Set the position of this link. Links are ordered ascending.
-     *
-     * @param $position
-     *
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * Add an icon to this link.
-     *
-     * @param string $icon
-     *
-     * @return $this
-     */
-    public function setIcon($icon)
-    {
-        $this->icon = $icon;
-
-        return $this;
-    }
-
-    /**
-     * Add options to this link. Can be used as href attributes.
-     *
-     * @param $options
-     *
-     * @return $this
-     */
-    public function setOptions($options)
-    {
-        $this->options = array_merge($this->options, $options);
-
-        return $this;
-    }
-
-    /**
-     * Set the link filter. If the closure returns false
-     * then this object will not be returned in the menu.
-     *
-     * @param \Closure $filter
-     *
-     * @return $this
-     */
-    public function setFilter(\Closure $filter)
-    {
-        if ($filter() == false) {
-            $this->restricted = true;
+        if (isset($this->options[$name])) {
+            return $this->options[$name];
         }
 
-        return $this;
+        return false;
     }
 
     /**
-     * Check if the link is restricted by a filter.
+     * Check if the current object is a drop down
      *
-     * @return bool
+     * @return false
      */
-    public function isRestricted()
+    public function isDropDown()
     {
-        return $this->restricted;
+        return false;
     }
-
-    /**
-     * Set this link as active.
-     *
-     * @param bool $bool
-     *
-     * @return $this
-     */
-    public function setActive($bool = true)
-    {
-        $this->active = $bool;
-
-        return $this;
-    }
-
-    /**
-     * Check if the link is active or not.
-     *
-     * @return bool
-     */
-    public function isActive()
-    {
-        return $this->active;
-    }
-
-    /**
-     * Finish adding the object and return to the parent.
-     *
-     * @return Menu
-     */
-    public function end()
-    {
-        $this->updateUrl();
-        $this->checkActive();
-
-        return $this->menu;
-    }
-
-    /**
-     * Convert routes to uris
-     */
-    protected function updateUrl()
-    {
-        if ($this->route) {
-            $this->url = $this->getUrl();
-        }
-    }
-
-    /**
-     * Check if we are at the given link
-     * If child items exist, check their urls as well
-     */
-    protected function checkActive()
-    {
-        if ($this->active == null) {
-            $currentUri = $this->getLaravelRoute();
-            $currentUri = strlen($currentUri) == 1 ? $currentUri : '/'. $currentUri;
-
-            if ($this->url == $currentUri || in_array($currentUri, $this->getChildren())) {
-                $this->setActive();
-            } else {
-                $this->setActive(false);
-            }
-        }
-    }
-
-    /**
-     * Count the number of items
-     * Defaults to 0 since links don't have items
-     *
-     * @return int
-     */
-    public function count()
-    {
-        return 0;
-    }
-
-    /**
-     * Get the items for this object
-     * Defaults to empty since links don't have items
-     *
-     * @return array
-     */
-    protected function getChildren()
-    {
-        return [];
-    }
-
-    /**
-     * Get a laravel route url
-     *
-     * @return mixed
-     */
-    protected function getUrl()
-    {
-        return \URL::route($this->route, [], false);
-    }
-
-    /**
-     * Get laravel route uri
-     *
-     * @return mixed
-     */
-    protected function getLaravelRoute()
-    {
-        return \Route::getCurrentRoute()->getUri();
-    }
-} 
+}

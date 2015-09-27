@@ -15,8 +15,8 @@ class DropDownSpec extends ObjectBehavior {
         $this->shouldHaveType('NukaCode\Menu\DropDown');
     }
 
-    function it_checks_count()
+    function it_checks_is_dropdown()
     {
-        $this->count()->shouldBe(0);
+        $this->isDropDown()->shouldReturn(true);
     }
 }

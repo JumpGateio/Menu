@@ -1,17 +1,17 @@
 <?php namespace NukaCode\Menu;
 
 use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 /**
- * Class MenuServiceProvider
+ * Class ServiceProvider
  *
  * @package NukaCode\Menu
  */
-class MenuServiceProvider extends ServiceProvider {
+class MenuServiceProvider extends LaravelServiceProvider {
 
     const NAME    = 'menu';
-    const VERSION = '0.2.6';
+    const VERSION = '1.0.0';
     const DOCS    = 'menu';
 
     /**
@@ -20,16 +20,6 @@ class MenuServiceProvider extends ServiceProvider {
      * @var bool
      */
     protected $defer = false;
-
-    /**
-     * Bootstrap the application events.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-//        $this->package('nukacode/menu');
-    }
 
     /**
      * Register the service provider.
@@ -50,7 +40,7 @@ class MenuServiceProvider extends ServiceProvider {
     protected function shareWithApp()
     {
         $this->app->singleton('menu', function () {
-            return new MenuContainer();
+            return new Container();
         });
     }
 

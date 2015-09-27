@@ -1,12 +1,17 @@
 <?php namespace NukaCode\Menu;
 
+use Illuminate\Support\Collection;
+use NukaCode\Menu\Traits\Insertable;
+use NukaCode\Menu\Traits\Linkable;
+
 /**
  * Class Menu
  *
  * @package NukaCode\Menu
  */
 class Menu {
-    use LinkableTrait;
+    use Linkable;
+    use Insertable;
 
     /**
      * Name of this menu
@@ -16,28 +21,16 @@ class Menu {
     public $name;
 
     /**
-     * Not sure if i need this.
+     * Construct a menu
      *
      * @param $menuName
      */
     public function __construct($menuName = null)
     {
+        $this->links = new Collection();
+
         if (isset($menuName)) {
             $this->name = $menuName;
         }
     }
-
-    /**
-     * Set the menu name.
-     *
-     * @param $name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-} 
+}
