@@ -24,4 +24,4 @@ Add the following to the kernel in ``app\kernel.php``
 
 .. code::
 
-    'menu' => 'NukaCode\Menu\Middleware\MenuMiddleware',
+    'menu' => '\NukaCode\Menu\Middleware\MenuMiddleware',
