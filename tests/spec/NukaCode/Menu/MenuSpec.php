@@ -23,4 +23,16 @@ class MenuSpec extends ObjectBehavior {
 
         $this->name->shouldBe('testdefault');
     }
+
+    function it_test_get_dropdown()
+    {
+        $this->dropdown('slug', 'name', function ($link){});
+
+        $this->getDropDown('slug', function ($link){});
+    }
+
+    function it_test_get_dropdown_exception()
+    {
+        $this->shouldThrow('\Exception')->during('getDropDown', ['test', function ($link){}]);
+    }
 }

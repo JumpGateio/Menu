@@ -54,4 +54,85 @@ class ContainerSpec extends ObjectBehavior {
 
         $this->getMenu('menuName')->links->count()->shouldBe(1);
     }
+
+    function it_checks_render_method_exception()
+    {
+        $this->shouldThrow('\Exception')->during('render', ['test']);
+    }
+
+    function it_checks_render_method()
+    {
+        $this->getMenu('test')->link('slug', function ($link){});
+        $this->render('test')->shouldReturnAnInstanceOf('\NukaCode\Menu\Menu');
+    }
+
+    function it_sets_active_items()
+    {
+        $this->getMenu('test')->link('slug', function ($link){});
+
+        $this->setActive('slug');
+
+        $this->render('test');
+    }
+
+    function it_sets_active_items_in_dropdown()
+    {
+        $this->getMenu('test')->dropdown('slug', 'name', function ($dropdown){
+            $dropdown->link('slug2', function ($link){});
+        });
+
+        $this->setActive('slug2');
+
+        $this->render('test');
+    }
+
+    function it_tests_insert_before_link()
+    {
+        $menu = $this->getMenu('test');
+
+        $menu->link('slug', function ($link){
+        });
+
+        $menu->link('slug2', function ($link){
+            $link->insertBefore('slug');
+        });
+    }
+
+    function it_tests_insert_before_dropdown()
+    {
+        $menu = $this->getMenu('test');
+
+        $menu->dropdown('slug', 'name', function ($dropdown){
+            $dropdown->link('slug2', function ($link){});
+        });
+
+        $menu->link('slug3', function ($link){
+            $link->insertBefore('slug2');
+        });
+    }
+
+    function it_tests_insert_after_link()
+    {
+        $menu = $this->getMenu('test');
+
+        $menu->link('slug', function ($link){
+        });
+
+        $menu->link('slug2', function ($link){
+            $link->insertAfter('slug');
+        });
+    }
+
+    function it_tests_insert_after_dropdown()
+    {
+        $menu = $this->getMenu('test');
+
+        $menu->dropdown('slug', 'name', function ($dropdown){
+            $dropdown->link('slug2', function ($link){});
+        });
+
+        $menu->link('slug3', function ($link){
+            $link->insertAfter('slug2');
+        });
+    }
 }

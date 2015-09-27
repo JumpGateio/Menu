@@ -19,4 +19,16 @@ class DropDownSpec extends ObjectBehavior {
     {
         $this->isDropDown()->shouldReturn(true);
     }
+
+    function it_checks_has_links_method()
+    {
+        $this->links[] = 'one';
+
+        $this->hasLinks()->shouldReturn(true);
+    }
+
+    function it_checks_has_links_method_no_links()
+    {
+        $this->hasLinks()->shouldReturn(false);
+    }
 }

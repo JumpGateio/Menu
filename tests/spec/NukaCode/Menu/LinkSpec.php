@@ -40,4 +40,18 @@ class LinkSpec extends ObjectBehavior {
     {
         $this->isDropDown()->shouldReturn(false);
     }
+
+    function it_checks_get_options_method()
+    {
+        $this->options = ['test' => 'test'];
+
+        $this->getOption('test')->shouldReturn('test');
+    }
+
+    function it_checks_get_options_method_invalid_option()
+    {
+        $this->options = [];
+
+        $this->getOption('test')->shouldReturn(false);
+    }
 }
