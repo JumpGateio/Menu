@@ -11,7 +11,7 @@ use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 class MenuServiceProvider extends LaravelServiceProvider {
 
     const NAME    = 'menu';
-    const VERSION = '1.0.1';
+    const VERSION = '1.0.2';
     const DOCS    = 'menu';
 
     /**
