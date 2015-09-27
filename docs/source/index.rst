@@ -35,4 +35,5 @@ Guides
     menu
     link
     dropDown
+    middleware
     example
