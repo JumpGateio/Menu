@@ -11,6 +11,13 @@ use NukaCode\Menu\DropDown;
 trait Linkable {
 
     /**
+     * Parent menu object
+     *
+     * @var Menu
+     */
+    public $menu;
+
+    /**
      * The menu links
      *
      * @var \Illuminate\Support\Collection
@@ -26,14 +33,8 @@ trait Linkable {
     {
         $dropDown = new DropDown();
         $dropDown->name = $name;
-        $dropDown->slug = $this->snakeName($slug);
-        $dropDown->menu = $this->getMenu();
 
-        call_user_func($callback, $dropDown);
-
-        if (!$dropDown->insert) {
-            $this->links[] = $dropDown;
-        }
+        $this->insertMenuObject($slug, $callback, $dropDown);
     }
 
     /**
@@ -59,21 +60,13 @@ trait Linkable {
      */
     public function link($slug, $callback)
     {
-        $link = new Link();
-        $link->slug = $this->snakeName($slug);
-        $link->menu = $this->getMenu();
-
-        call_user_func($callback, $link);
-
-        if (!$link->insert) {
-            $this->links[] = $link;
-        }
+        $this->insertMenuObject($slug, $callback, (new Link));
     }
 
     /**
      * Get the menu this linkable belongs to
      *
-     * @return $this
+     * @return Menu
      */
     private function getMenu()
     {
@@ -94,5 +87,24 @@ trait Linkable {
     public function snakeName($name)
     {
         return e(snake_case($name));
+    }
+
+    /**
+     * Insert an object into the menu
+     *
+     * @param $slug
+     * @param $callback
+     * @param $object
+     */
+    private function insertMenuObject($slug, $callback, $object)
+    {
+        $object->slug = $this->snakeName($slug);
+        $object->menu = $this->getMenu();
+
+        call_user_func($callback, $object);
+
+        if (!$object->insert) {
+            $this->links[] = $object;
+        }
     }
 } 

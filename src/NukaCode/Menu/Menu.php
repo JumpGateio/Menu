@@ -16,7 +16,7 @@ class Menu {
     /**
      * Name of this menu
      *
-     * @var
+     * @var string
      */
     public $name;
 
