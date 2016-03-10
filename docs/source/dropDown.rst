@@ -57,3 +57,11 @@ slug: The slug of the link or drop down to insert before or after.
 
     $dropDown->insertAfter('slug');
     $dropDown->insertBefore('slug');
+
+Determine Active Parentage
+--------------------------
+By default, a drop down will become active when a child link becomes active.  Most of the time this is how it should be, but in case that is not desirable there is a helper method to disable this.
+
+.. code::
+
+    $dropdown->disableActiveParentage();
