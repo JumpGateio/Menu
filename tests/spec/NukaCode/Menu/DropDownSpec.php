@@ -31,4 +31,16 @@ class DropDownSpec extends ObjectBehavior {
     {
         $this->hasLinks()->shouldReturn(false);
     }
+    
+    function it_checks_active_parentage()
+    {
+        $this->activeParentage()->shouldReturn(true);
+    }
+    
+    function it_disables_active_parentage()
+    {
+        $this->disableActiveParentage();
+        
+        $this->activeParentage()->shouldReturn(false);
+    }
 }
