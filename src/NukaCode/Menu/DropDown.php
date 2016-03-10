@@ -25,6 +25,10 @@ class DropDown {
      */
     public $name;
 
+    /**
+     * @var bool
+     */
+    public $activateWithLink = true;
 
     /**
      * Construct a menu
@@ -58,5 +62,14 @@ class DropDown {
     public function hasLinks()
     {
         return (count($this->links) > 0);
+    }
+
+    /**
+     * This stops the drop down from becoming active
+     * because a child link is active.
+     */
+    public function disableActiveParentage()
+    {
+        $this->activateWithLink = false;
     }
 }
