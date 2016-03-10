@@ -153,7 +153,9 @@ class Container extends Collection {
                     if (isset($link->links)) {
                         $link->links->each(function ($subLink) use ($link) {
                             if ($subLink->slug == $this->active) {
-                                $link->setActive(true);
+                                if ($link->activeParentage()) {
+                                    $link->setActive(true);
+                                }
                                 $subLink->setActive(true);
                             }
                         });
