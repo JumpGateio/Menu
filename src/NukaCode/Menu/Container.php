@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Collection;
 
-
 /**
  * Class Container
  *
  * @package NukaCode\Menu
  */
-class Container extends Collection {
+class Container extends Collection
+{
 
     /**
      * The slug to set to active during render
@@ -55,7 +55,7 @@ class Container extends Collection {
      */
     public function exists($menuName)
     {
-        return (bool) $this->getMenuObject($menuName);
+        return (bool)$this->getMenuObject($menuName);
     }
 
     /**
@@ -85,7 +85,7 @@ class Container extends Collection {
 
         $menu = $this->getMenuObject($menuName);
 
-        if (!$menu) {
+        if (! $menu) {
             throw new \Exception("Menu {$menuName} not found.");
         }
 
@@ -138,30 +138,46 @@ class Container extends Collection {
 
     /**
      * Use the active param and set the link to active
-     *
-     * REFACTOR!
      */
     private function updateActive()
     {
         $this->each(function ($item) {
             if (isset($item->links)) {
-                $item->links->each(function ($link) {
-                    if ($link->slug == $this->active) {
-                        $link->setActive(true);
-                    }
-
-                    if (isset($link->links)) {
-                        $link->links->each(function ($subLink) use ($link) {
-                            if ($subLink->slug == $this->active) {
-                                if ($link->activeParentage()) {
-                                    $link->setActive(true);
-                                }
-                                $subLink->setActive(true);
-                            }
-                        });
-                    }
-                });
+                $this->makeActive($item);
             }
         });
     }
-} 
+
+    /**
+     * Loop through the links and check for active.
+     * Sets the item and it's parents as active when told to.
+     */
+    private function makeActive($item, $parent = null)
+    {
+        $item->links->each(function ($link) use ($item, $parent) {
+            if ($link->slug == $this->active) {
+                $this->makeParentActive($parent);
+                $this->makeParentActive($item);
+
+                $link->setActive(true);
+            }
+
+            if (isset($link->links)) {
+                $this->makeActive($link, $item);
+            }
+        });
+    }
+
+    /**
+     * Set the parent item as active if able to do so.
+     */
+    private function makeParentActive($parent)
+    {
+        if (! is_null($parent)
+            && method_exists($parent, 'activeParentage')
+            && $parent->activeParentage()
+        ) {
+            $parent->setActive(true);
+        }
+    }
+}
