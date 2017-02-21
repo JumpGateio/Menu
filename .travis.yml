@@ -6,10 +6,14 @@ php:
   - 5.5
   - 5.4
 
+notifications:
+  slack: nukacode:HyFrc2QLi5PC5fPxadm07O5v
+
 matrix:
   fast_finish: true
 
 before_script:
+  - composer self-update
   - composer install
 
 script:
