@@ -2,41 +2,69 @@
 
 namespace Tests;
 
+use JumpGate\Menu\DropDown;
+use JumpGate\Menu\Link;
+use JumpGate\Menu\Menu;
 use PHPUnit\Framework\TestCase;
 
 class MenuTest extends TestCase
 {
-    function it_is_initializable()
+    /**
+     * @var \JumpGate\Menu\Menu
+     */
+    protected $menu;
+
+    public function setUp()
     {
-        $this->shouldHaveType('NukaCode\Menu\Menu');
+        parent::setUp();
+
+        $this->menu = new Menu();
     }
 
+    /** @test */
     function it_sets_the_name()
     {
-        $this->name = 'testname';
+        $this->menu->name = 'testName';
 
-        $this->name->shouldBe('testname');
+        $this->assertEquals('testName', $this->menu->name);
     }
 
+    /** @test */
     function it_sets_default_name()
     {
-        $this->beConstructedWith('testdefault');
+        $menu = new Menu('testDefault');
 
-        $this->name->shouldBe('testdefault');
+        $this->assertEquals('testDefault', $menu->name);
     }
 
+    /** @test */
     function it_test_get_dropdown()
     {
-        $this->dropdown('slug', 'name', function ($link) {
+        $this->menu->dropdown('slug', 'name', function (DropDown $dropDown) {
+            $dropDown->link('slug2', function (Link $link) {
+                //
+            });
         });
 
-        $this->getDropDown('slug', function ($link) {
+        $this->menu->getDropDown('slug', function (DropDown $dropDown) {
+            $dropDown->link('slug3', function (Link $link) {
+                //
+            });
         });
+
+        $this->assertCount(2, $this->menu->links->first()->links);
     }
 
+    /**
+     * @test
+     *
+     * @expectedException Exception
+     * @expectedExceptionMessage Drop down test not found.
+     */
     function it_test_get_dropdown_exception()
     {
-        $this->shouldThrow('\Exception')->during('getDropDown', ['test', function ($link) {
-        }]);
+        $this->menu->getDropDown('test', function (DropDown $dropDown) {
+            //
+        });
     }
 }

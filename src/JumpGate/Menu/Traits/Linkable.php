@@ -52,7 +52,7 @@ trait Linkable
         if ($dropDown) {
             call_user_func($callback, $dropDown);
         } else {
-            throw new \Exception("Drop down {$slug} not found");
+            throw new \Exception("Drop down {$slug} not found.");
         }
     }
 
