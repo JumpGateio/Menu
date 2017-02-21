@@ -1,27 +1,42 @@
-Installation
-============
-Installation guide for the NukeCode Menu package. This package requires Laravel 5.0 or higher.
+# Installation
 
-Composer
---------
+- [Introduction](#introduction)
+- [Composer](#composer)
+- [Service Provider](#service-provider)
+- [Middleware](#middleware)
+
+<a name="introduction"></a>
+## Introduction
+Installation guide for the Jumpgate Menu package. This package requires Laravel 5.0 or higher.
+
+<a name="composer"></a>
+## Composer
 Run the following command to require the menu package in your project.
 
-.. code::
+```
+composer require jumpgate/menu:~1.0
+```
 
-    composer require nukacode/menu:1.0.*
-
-Service Provider
-----------------
+<a name="service-provider"></a>
+## Service Provider
 Add the following to the service providers in ``config/app.php``.
 
-.. code::
+```
+'providers' => [
+    ...
+    JumpGate\Menu\MenuServiceProvider::class,
+    ...
+],
+```
 
-    'NukaCode\Menu\MenuServiceProvider',
+<a name="middleware"></a>
+## Middleware
+Add the following to the kernel in ``app/Http/Kernel.php``
 
-Middleware
-----------
-Add the following to the kernel in ``app\kernel.php``
-
-.. code::
-
-    'menu' => '\NukaCode\Menu\Middleware\MenuMiddleware',
+```
+protected $middleware = [
+   ...
+   'active'     => \JumpGate\Menu\Middleware\MenuMiddleware::class,
+   ...
+];
+```
