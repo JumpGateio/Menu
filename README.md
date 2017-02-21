@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/JumpGateio/menu.svg?branch=master)](https://travis-ci.org/JumpGateio/menu)
+[![Build Status](https://travis-ci.org/JumpGateio/Menu.svg?branch=master)](https://travis-ci.org/JumpGateio/Menu)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JumpGateio/menu/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/JumpGateio/menu/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/JumpGateio/menu/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/JumpGateio/menu/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/jumpgate/menu/version.svg)](https://packagist.org/packages/jumpgate/menu)
