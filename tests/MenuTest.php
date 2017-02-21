@@ -21,7 +21,7 @@ class MenuTest extends TestCase
     }
 
     /** @test */
-    function it_sets_the_name()
+    public function it_sets_the_name()
     {
         $this->menu->name = 'testName';
 
@@ -29,7 +29,7 @@ class MenuTest extends TestCase
     }
 
     /** @test */
-    function it_sets_default_name()
+    public function it_sets_default_name()
     {
         $menu = new Menu('testDefault');
 
@@ -37,7 +37,7 @@ class MenuTest extends TestCase
     }
 
     /** @test */
-    function it_test_get_dropdown()
+    public function it_test_get_dropdown()
     {
         $this->menu->dropdown('slug', 'name', function (DropDown $dropDown) {
             $dropDown->link('slug2', function () {
@@ -60,7 +60,7 @@ class MenuTest extends TestCase
      * @expectedException Exception
      * @expectedExceptionMessage Drop down test not found.
      */
-    function it_test_get_dropdown_exception()
+    public function it_test_get_dropdown_exception()
     {
         $this->menu->getDropDown('test', function () {
             //

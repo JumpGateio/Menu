@@ -20,7 +20,7 @@ class LinkTest extends TestCase
     }
 
     /** @test */
-    function it_checks_set_url()
+    public function it_checks_set_url()
     {
         $this->link->url = 'testUrl';
 
@@ -28,7 +28,7 @@ class LinkTest extends TestCase
     }
 
     /** @test */
-    function it_checks_set_active()
+    public function it_checks_set_active()
     {
         $this->link->setActive(true);
 
@@ -36,7 +36,7 @@ class LinkTest extends TestCase
     }
 
     /** @test */
-    function it_checks_not_active()
+    public function it_checks_not_active()
     {
         $this->link->setActive(false);
 
@@ -44,7 +44,7 @@ class LinkTest extends TestCase
     }
 
     /** @test */
-    function it_checks_set_options()
+    public function it_checks_set_options()
     {
         $this->link->options = ['data' => 'dataOne'];
 
@@ -53,13 +53,13 @@ class LinkTest extends TestCase
     }
 
     /** @test */
-    function it_checks_is_dropdown()
+    public function it_checks_is_dropdown()
     {
         $this->assertFalse($this->link->isDropDown());
     }
 
     /** @test */
-    function it_checks_get_options_method()
+    public function it_checks_get_options_method()
     {
         $this->link->options = ['test' => 'testValue'];
 
@@ -67,7 +67,7 @@ class LinkTest extends TestCase
     }
 
     /** @test */
-    function it_checks_get_options_method_invalid_option()
+    public function it_checks_get_options_method_invalid_option()
     {
         $this->link->options = [];
 

@@ -20,13 +20,13 @@ class DropDownTest extends TestCase
     }
 
     /** @test */
-    function it_checks_is_dropdown()
+    public function it_checks_is_dropdown()
     {
         $this->assertTrue($this->dropDown->isDropDown());
     }
 
     /** @test */
-    function it_checks_has_links_method()
+    public function it_checks_has_links_method()
     {
         $this->dropDown->links[] = 'one';
 
@@ -34,19 +34,19 @@ class DropDownTest extends TestCase
     }
 
     /** @test */
-    function it_checks_has_links_method_no_links()
+    public function it_checks_has_links_method_no_links()
     {
         $this->assertFalse($this->dropDown->hasLinks());
     }
 
     /** @test */
-    function it_checks_active_parentage()
+    public function it_checks_active_parentage()
     {
         $this->assertTrue($this->dropDown->activeParentage());
     }
 
     /** @test */
-    function it_disables_active_parentage()
+    public function it_disables_active_parentage()
     {
         $this->dropDown->disableActiveParentage();
 
