@@ -48,7 +48,7 @@ class ContainerTest extends TestCase
     public function it_checks_if_has_links_return_true()
     {
         $this->menu->getMenu('menuName')
-                   ->link('slug', function (Link $link) {
+                   ->link('slug', function () {
                        //
                    });
 
@@ -76,7 +76,7 @@ class ContainerTest extends TestCase
     public function it_checks_if_get_menu_returns_the_existing_menu()
     {
         $this->menu->getMenu('menuName')
-                   ->link('slug', function (Link $link) {
+                   ->link('slug', function () {
                        //
                    });
 
@@ -98,7 +98,7 @@ class ContainerTest extends TestCase
     public function it_can_render_a_menu()
     {
         $this->menu->getMenu('test')
-                   ->link('slug', function (Link $link) {
+                   ->link('slug', function () {
                        //
                    });
 
@@ -109,7 +109,7 @@ class ContainerTest extends TestCase
     public function it_sets_active_items()
     {
         $this->menu->getMenu('test')
-                   ->link('slug', function (Link $link) {
+                   ->link('slug', function () {
                        //
                    });
 
@@ -125,7 +125,7 @@ class ContainerTest extends TestCase
     {
         $this->menu->getMenu('test')
                    ->dropdown('slug', 'name', function (DropDown $dropdown) {
-                       $dropdown->link('slug2', function (Link $link) {
+                       $dropdown->link('slug2', function () {
                            //
                        });
                    });
@@ -145,7 +145,7 @@ class ContainerTest extends TestCase
                    ->dropdown('slug', 'name', function (DropDown $dropdown) {
                        $dropdown->disableActiveParentage();
 
-                       $dropdown->link('slug2', function (Link $link) {
+                       $dropdown->link('slug2', function () {
                            //
                        });
                    });
@@ -163,11 +163,11 @@ class ContainerTest extends TestCase
     {
         $menu = $this->menu->getMenu('test');
 
-        $menu->link('slug', function (Link $link) {
+        $menu->link('slug', function () {
             //
         });
 
-        $menu->link('slug2', function (Link $link) {
+        $menu->link('slug2', function () {
             $link->insertBefore('slug');
         });
 
@@ -180,7 +180,7 @@ class ContainerTest extends TestCase
         $menu = $this->menu->getMenu('test');
 
         $menu->dropdown('slug', 'name', function (DropDown $dropdown) {
-            $dropdown->link('slug2', function (Link $link) {
+            $dropdown->link('slug2', function () {
                 //
             });
         });
@@ -197,15 +197,15 @@ class ContainerTest extends TestCase
     {
         $menu = $this->menu->getMenu('test');
 
-        $menu->link('slug', function (Link $link) {
+        $menu->link('slug', function () {
             //
         });
 
-        $menu->link('slug2', function (Link $link) {
+        $menu->link('slug2', function () {
             //
         });
 
-        $menu->link('slug3', function (Link $link) {
+        $menu->link('slug3', function () {
             //
         });
 
@@ -222,13 +222,13 @@ class ContainerTest extends TestCase
         $menu = $this->menu->getMenu('test');
 
         $menu->dropdown('slug', 'name', function (DropDown $dropdown) {
-            $dropdown->link('slug2', function (Link $link) {
+            $dropdown->link('slug2', function () {
                 //
             });
-            $dropdown->link('slug3', function (Link $link) {
+            $dropdown->link('slug3', function () {
                 //
             });
-            $dropdown->link('slug4', function (Link $link) {
+            $dropdown->link('slug4', function () {
                 //
             });
         });

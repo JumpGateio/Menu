@@ -3,7 +3,6 @@
 namespace Tests;
 
 use JumpGate\Menu\DropDown;
-use JumpGate\Menu\Link;
 use JumpGate\Menu\Menu;
 use PHPUnit\Framework\TestCase;
 
@@ -41,13 +40,13 @@ class MenuTest extends TestCase
     function it_test_get_dropdown()
     {
         $this->menu->dropdown('slug', 'name', function (DropDown $dropDown) {
-            $dropDown->link('slug2', function (Link $link) {
+            $dropDown->link('slug2', function () {
                 //
             });
         });
 
         $this->menu->getDropDown('slug', function (DropDown $dropDown) {
-            $dropDown->link('slug3', function (Link $link) {
+            $dropDown->link('slug3', function () {
                 //
             });
         });
@@ -63,7 +62,7 @@ class MenuTest extends TestCase
      */
     function it_test_get_dropdown_exception()
     {
-        $this->menu->getDropDown('test', function (DropDown $dropDown) {
+        $this->menu->getDropDown('test', function () {
             //
         });
     }
