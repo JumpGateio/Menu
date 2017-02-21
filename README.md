@@ -6,4 +6,4 @@
 [![License](https://poser.pugx.org/nukacode/menu/license.svg)](https://packagist.org/packages/nukacode/menu)
 
 # Documentation
-See the documentation at [Read the docs](http://menu.readthedocs.org/en/stable/)
+See the documentation [in the docs](/docs).
