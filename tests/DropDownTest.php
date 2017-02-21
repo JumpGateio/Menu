@@ -2,46 +2,54 @@
 
 namespace Tests;
 
+use JumpGate\Menu\DropDown;
 use PHPUnit\Framework\TestCase;
 
 class DropDownTest extends TestCase
 {
-    function let()
+    /**
+     * @var \JumpGate\Menu\DropDown
+     */
+    protected $dropDown;
+
+    public function setUp()
     {
-        $this->beConstructedWith('linkName');
+        parent::setUp();
+
+        $this->dropDown = new DropDown();
     }
 
-    function it_is_initializable()
-    {
-        $this->shouldHaveType('NukaCode\Menu\DropDown');
-    }
-
+    /** @test */
     function it_checks_is_dropdown()
     {
-        $this->isDropDown()->shouldReturn(true);
+        $this->assertTrue($this->dropDown->isDropDown());
     }
 
+    /** @test */
     function it_checks_has_links_method()
     {
-        $this->links[] = 'one';
+        $this->dropDown->links[] = 'one';
 
-        $this->hasLinks()->shouldReturn(true);
+        $this->assertTrue($this->dropDown->hasLinks());
     }
 
+    /** @test */
     function it_checks_has_links_method_no_links()
     {
-        $this->hasLinks()->shouldReturn(false);
+        $this->assertFalse($this->dropDown->hasLinks());
     }
 
+    /** @test */
     function it_checks_active_parentage()
     {
-        $this->activeParentage()->shouldReturn(true);
+        $this->assertTrue($this->dropDown->activeParentage());
     }
 
+    /** @test */
     function it_disables_active_parentage()
     {
-        $this->disableActiveParentage();
+        $this->dropDown->disableActiveParentage();
 
-        $this->activeParentage()->shouldReturn(false);
+        $this->assertFalse($this->dropDown->activeParentage());
     }
 }
