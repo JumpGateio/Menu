@@ -167,7 +167,7 @@ class ContainerTest extends TestCase
             //
         });
 
-        $menu->link('slug2', function () {
+        $menu->link('slug2', function (Link $link) {
             $link->insertBefore('slug');
         });
 
