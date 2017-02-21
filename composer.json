@@ -25,5 +25,5 @@
             "JumpGate\\Menu\\": "src/JumpGate/Menu"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
