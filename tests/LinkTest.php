@@ -2,57 +2,75 @@
 
 namespace Tests;
 
+use JumpGate\Menu\Link;
 use PHPUnit\Framework\TestCase;
 
 class LinkTest extends TestCase
 {
-    function it_is_initializable()
+    /**
+     * @var \JumpGate\Menu\Link
+     */
+    protected $link;
+
+    public function setUp()
     {
-        $this->shouldHaveType('NukaCode\Menu\Link');
+        parent::setUp();
+
+        $this->link = new Link();
     }
 
+    /** @test */
     function it_checks_set_url()
     {
-        $this->url = 'testUrl';
-        $this->url->shouldBe('testUrl');
+        $this->link->url = 'testUrl';
+
+        $this->assertEquals('testUrl', $this->link->url);
     }
 
+    /** @test */
     function it_checks_set_active()
     {
-        $this->setActive(true);
-        $this->shouldBeActive();
+        $this->link->setActive(true);
+
+        $this->assertTrue($this->link->active);
     }
 
+    /** @test */
     function it_checks_not_active()
     {
-        $this->setActive(false);
-        $this->shouldNotBeActive();
+        $this->link->setActive(false);
+
+        $this->assertFalse($this->link->active);
     }
 
+    /** @test */
     function it_checks_set_options()
     {
-        $this->options = ['data' => 'dataOne'];
+        $this->link->options = ['data' => 'dataOne'];
 
-        $this->options->shouldContain('dataOne');
-        $this->options->shouldHaveKey('data');
+        $this->assertArrayHasKey('data', $this->link->options);
+        $this->assertEquals('data', array_search('dataOne', $this->link->options));
     }
 
+    /** @test */
     function it_checks_is_dropdown()
     {
-        $this->isDropDown()->shouldReturn(false);
+        $this->assertFalse($this->link->isDropDown());
     }
 
+    /** @test */
     function it_checks_get_options_method()
     {
-        $this->options = ['test' => 'test'];
+        $this->link->options = ['test' => 'testValue'];
 
-        $this->getOption('test')->shouldReturn('test');
+        $this->assertEquals('testValue', $this->link->getOption('test'));
     }
 
+    /** @test */
     function it_checks_get_options_method_invalid_option()
     {
-        $this->options = [];
+        $this->link->options = [];
 
-        $this->getOption('test')->shouldReturn(false);
+        $this->assertFalse($this->link->getOption('test'));
     }
 }
