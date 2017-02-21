@@ -1,5 +1,5 @@
 {
-    "name":        "nukacode/menu",
+    "name":        "jumpgate/menu",
     "description": "A simple menu system.",
     "license":     "MIT",
     "authors":     [
@@ -12,12 +12,14 @@
         "illuminate/support": ">=4.0"
     },
     "require-dev": {
-      "phpspec/phpspec": "~2.1",
-      "henrikbjorn/phpspec-code-coverage": "~0.2"
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "orchestra/testbench": "~3.4",
+        "phpunit/phpunit": "~5.7"
     },
     "autoload":    {
         "psr-4":    {
-            "NukaCode\\Menu\\": "src/NukaCode/Menu"
+            "JumpGate\\Menu\\": "src/JumpGate/Menu"
         }
     },
     "minimum-stability": "dev"

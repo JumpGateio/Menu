@@ -1,10 +1,11 @@
-<?php namespace spec\NukaCode\Menu;
+<?php
 
-use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+namespace Tests;
 
-class MenuSpec extends ObjectBehavior {
+use PHPUnit\Framework\TestCase;
 
+class MenuTest extends TestCase
+{
     function it_is_initializable()
     {
         $this->shouldHaveType('NukaCode\Menu\Menu');
@@ -26,13 +27,16 @@ class MenuSpec extends ObjectBehavior {
 
     function it_test_get_dropdown()
     {
-        $this->dropdown('slug', 'name', function ($link){});
+        $this->dropdown('slug', 'name', function ($link) {
+        });
 
-        $this->getDropDown('slug', function ($link){});
+        $this->getDropDown('slug', function ($link) {
+        });
     }
 
     function it_test_get_dropdown_exception()
     {
-        $this->shouldThrow('\Exception')->during('getDropDown', ['test', function ($link){}]);
+        $this->shouldThrow('\Exception')->during('getDropDown', ['test', function ($link) {
+        }]);
     }
 }

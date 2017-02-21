@@ -1,4 +1,6 @@
-<?php namespace NukaCode\Menu;
+<?php
+
+namespace JumpGate\Menu;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
@@ -6,14 +8,10 @@ use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 /**
  * Class ServiceProvider
  *
- * @package NukaCode\Menu
+ * @package JumpGate\Menu
  */
-class MenuServiceProvider extends LaravelServiceProvider {
-
-    const NAME    = 'menu';
-    const VERSION = '1.0.4';
-    const DOCS    = 'menu';
-
+class MenuServiceProvider extends LaravelServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -51,15 +49,8 @@ class MenuServiceProvider extends LaravelServiceProvider {
      */
     protected function registerAliases()
     {
-        $aliases = [
-            'Menu' => 'NukaCode\Menu\MenuFacade',
-        ];
-
         $loader = AliasLoader::getInstance();
-
-        foreach ($aliases as $alias => $class) {
-            $loader->alias($alias, $class);
-        }
+        $loader->alias('Menu', 'JumpGate\Menu\MenuFacade');
     }
 
     /**

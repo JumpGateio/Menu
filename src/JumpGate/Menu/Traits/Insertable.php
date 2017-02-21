@@ -1,12 +1,14 @@
-<?php namespace NukaCode\Menu\Traits;
+<?php
+
+namespace JumpGate\Menu\Traits;
 
 /**
  * Class Insertable
  *
- * @package NukaCode\Menu\Traits
+ * @package JumpGate\Menu\Traits
  */
-trait Insertable {
-
+trait Insertable
+{
     /**
      * Let the add method know not to append this item as it was spliced into the array.
      *
@@ -52,7 +54,6 @@ trait Insertable {
                             $link->links->splice($subLinkKey, 0, [$this]);
                         }
                     }
-
                 }
             } else {
                 if ($link->slug == $slug) {

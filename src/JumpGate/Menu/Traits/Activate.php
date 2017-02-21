@@ -1,19 +1,20 @@
-<?php namespace NukaCode\Menu\Traits;
+<?php
 
+namespace JumpGate\Menu\Traits;
 
 /**
  * Class Activate
  *
- * @package NukaCode\Menu\Traits
+ * @package JumpGate\Menu\Traits
  */
-trait Activate {
-
+trait Activate
+{
     /**
      * Is the link active.
      *
      * @var bool
      */
-    public $active;
+    public $active = false;
 
     /**
      * Set this link as active.

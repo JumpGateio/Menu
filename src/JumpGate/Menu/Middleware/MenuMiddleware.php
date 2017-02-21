@@ -1,13 +1,16 @@
-<?php namespace NukaCode\Menu\Middleware;
+<?php
+
+namespace JumpGate\Menu\Middleware;
 
 use Closure;
 
 /**
  * Class MenuMiddleware
  *
- * @package NukaCode\Menu\Middleware
+ * @package JumpGate\Menu\Middleware
  */
-class MenuMiddleware {
+class MenuMiddleware
+{
     /**
      * Run the request filter.
      *
@@ -42,5 +45,4 @@ class MenuMiddleware {
 
         return $next($request);
     }
-
 }

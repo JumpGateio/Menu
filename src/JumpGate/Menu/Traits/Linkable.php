@@ -1,15 +1,17 @@
-<?php namespace NukaCode\Menu\Traits;
+<?php
 
-use NukaCode\Menu\Link;
-use NukaCode\Menu\DropDown;
+namespace JumpGate\Menu\Traits;
+
+use JumpGate\Menu\Link;
+use JumpGate\Menu\DropDown;
 
 /**
  * Class Linkable
  *
- * @package NukaCode\Menu\Traits
+ * @package JumpGate\Menu\Traits
  */
-trait Linkable {
-
+trait Linkable
+{
     /**
      * Parent menu object
      *
@@ -31,7 +33,7 @@ trait Linkable {
      */
     public function dropDown($slug, $name, $callback)
     {
-        $dropDown = new DropDown();
+        $dropDown       = new DropDown();
         $dropDown->name = $name;
 
         $this->insertMenuObject($slug, $callback, $dropDown);
@@ -103,7 +105,7 @@ trait Linkable {
 
         call_user_func($callback, $object);
 
-        if (!$object->insert) {
+        if (! $object->insert) {
             $this->links[] = $object;
         }
     }

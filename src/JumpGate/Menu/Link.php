@@ -1,16 +1,18 @@
-<?php namespace NukaCode\Menu;
+<?php
 
-use NukaCode\Menu\Traits\Activate;
-use NukaCode\Menu\Traits\Insertable;
+namespace JumpGate\Menu;
+
+use JumpGate\Menu\Traits\Activate;
+use JumpGate\Menu\Traits\Insertable;
 
 /**
  * Class Link
  *
- * @package NukaCode\Menu
+ * @package JumpGate\Menu
  */
-class Link {
-    use Insertable;
-    use Activate;
+class Link
+{
+    use Activate, Insertable;
 
     /**
      * The link slug

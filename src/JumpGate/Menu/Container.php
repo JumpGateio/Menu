@@ -1,15 +1,16 @@
-<?php namespace NukaCode\Menu;
+<?php
+
+namespace JumpGate\Menu;
 
 use Illuminate\Support\Collection;
 
 /**
  * Class Container
  *
- * @package NukaCode\Menu
+ * @package JumpGate\Menu
  */
 class Container extends Collection
 {
-
     /**
      * The slug to set to active during render
      *

@@ -1,10 +1,11 @@
-<?php namespace spec\NukaCode\Menu;
+<?php
 
-use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+namespace Tests;
 
-class LinkSpec extends ObjectBehavior {
+use PHPUnit\Framework\TestCase;
 
+class LinkTest extends TestCase
+{
     function it_is_initializable()
     {
         $this->shouldHaveType('NukaCode\Menu\Link');

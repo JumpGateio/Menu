@@ -1,14 +1,16 @@
-<?php namespace NukaCode\Menu;
+<?php
+
+namespace JumpGate\Menu;
 
 use Illuminate\Support\Facades\Facade as LaravelFacade;
 
 /**
  * Class MenuFacade
  *
- * @package NukaCode\Menu
+ * @package JumpGate\Menu
  */
-class MenuFacade extends LaravelFacade {
-
+class MenuFacade extends LaravelFacade
+{
     /**
      * Get the registered name of the component.
      *
@@ -18,5 +20,4 @@ class MenuFacade extends LaravelFacade {
     {
         return 'menu';
     }
-
 }

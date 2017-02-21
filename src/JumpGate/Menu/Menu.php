@@ -1,17 +1,19 @@
-<?php namespace NukaCode\Menu;
+<?php
+
+namespace JumpGate\Menu;
 
 use Illuminate\Support\Collection;
-use NukaCode\Menu\Traits\Insertable;
-use NukaCode\Menu\Traits\Linkable;
+use JumpGate\Menu\Traits\Insertable;
+use JumpGate\Menu\Traits\Linkable;
 
 /**
  * Class Menu
  *
- * @package NukaCode\Menu
+ * @package JumpGate\Menu
  */
-class Menu {
-    use Linkable;
-    use Insertable;
+class Menu
+{
+    use Linkable, Insertable;
 
     /**
      * Name of this menu

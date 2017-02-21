@@ -1,19 +1,20 @@
-<?php namespace NukaCode\Menu;
+<?php
+
+namespace JumpGate\Menu;
 
 use Illuminate\Support\Collection;
-use NukaCode\Menu\Traits\Activate;
-use NukaCode\Menu\Traits\Insertable;
-use NukaCode\Menu\Traits\Linkable;
+use JumpGate\Menu\Traits\Activate;
+use JumpGate\Menu\Traits\Insertable;
+use JumpGate\Menu\Traits\Linkable;
 
 /**
  * Class DropDown
  *
- * @package NukaCode\Menu
+ * @package JumpGate\Menu
  */
-class DropDown {
-    use Linkable;
-    use Activate;
-    use Insertable;
+class DropDown
+{
+    use Activate, Insertable, Linkable;
 
     /**
      * @var string

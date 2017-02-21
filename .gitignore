@@ -5,3 +5,4 @@ composer.lock
 /coverage/
 coverage.xml
 docs/build
+/.idea
