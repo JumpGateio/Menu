@@ -6,6 +6,8 @@ namespace JumpGate\Menu\Traits;
  * Class Insertable
  *
  * @package JumpGate\Menu\Traits
+ *
+ * @property \JumpGate\Menu\Menu $menu
  */
 trait Insertable
 {
