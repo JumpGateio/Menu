@@ -24,5 +24,8 @@
             "JumpGate\\Menu\\": "src/JumpGate/Menu"
         }
     },
+    "autoload-dev": {
+        "Tests\\": "tests"
+    },
     "minimum-stability": "stable"
 }
