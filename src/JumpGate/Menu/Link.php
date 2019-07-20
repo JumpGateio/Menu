@@ -2,6 +2,7 @@
 
 namespace JumpGate\Menu;
 
+use Illuminate\Contracts\Support\Jsonable;
 use JumpGate\Menu\Traits\Activate;
 use JumpGate\Menu\Traits\Insertable;
 
@@ -10,7 +11,7 @@ use JumpGate\Menu\Traits\Insertable;
  *
  * @package JumpGate\Menu
  */
-class Link
+class Link implements Jsonable
 {
     use Activate, Insertable;
 
@@ -66,5 +67,20 @@ class Link
     public function isDropDown()
     {
         return false;
+    }
+
+    /**
+     * Convert link to JSON.
+     * 
+     * @param int $options
+     *
+     * @return string
+     */
+    public function toJson($options = 0)
+    {
+        $properties = get_object_vars($this);
+        unset($properties['menu']);
+
+        return json_encode($properties);
     }
 }
