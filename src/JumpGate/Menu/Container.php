@@ -14,7 +14,7 @@ class Container extends Collection
     /**
      * The slug to set to active during render
      *
-     * @var string
+     * @var array
      */
     private $active;
 
@@ -134,7 +134,7 @@ class Container extends Collection
      */
     public function setActive($slug)
     {
-        $this->active = $slug;
+        $this->active = explode('::', $slug);
     }
 
     /**
@@ -156,7 +156,7 @@ class Container extends Collection
     private function makeActive($item, $parent = null)
     {
         $item->links->each(function ($link) use ($item, $parent) {
-            if ($link->slug == $this->active) {
+            if (in_array($link->slug, $this->active)) {
                 $this->makeParentActive($parent);
                 $this->makeParentActive($item);
 
