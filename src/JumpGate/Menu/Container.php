@@ -42,7 +42,7 @@ class Container extends Collection
      *
      * @return Menu
      */
-    private function add($menuName)
+    public function add($menuName)
     {
         return $this->items[] = new Menu($this->snakeName($menuName));
     }
