@@ -16,7 +16,7 @@ class Container extends Collection
      *
      * @var array
      */
-    private $active;
+    private $active = [];
 
     /**
      * Get a menu you have created.
@@ -120,7 +120,7 @@ class Container extends Collection
     /**
      * Get the active link by slug.
      *
-     * @return string
+     * @return array
      */
     public function getActive()
     {

@@ -69,7 +69,7 @@ class ContainerTest extends TestCase
     {
         $this->menu->setActive('slug');
 
-        $this->assertEquals('slug', $this->menu->getActive());
+        $this->assertTrue(in_array('slug', $this->menu->getActive()));
     }
 
     /** @test */
