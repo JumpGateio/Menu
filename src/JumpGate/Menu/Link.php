@@ -34,7 +34,7 @@ class Link implements Jsonable
      *
      * @var Menu
      */
-    public $mennu;
+    public $menu;
 
     /**
      * Link url
