@@ -26,31 +26,9 @@ class MenuServiceProvider extends LaravelServiceProvider
      */
     public function register()
     {
-        $this->shareWithApp();
-        $this->registerAliases();
-    }
-
-    /**
-     * Share the package with application
-     *
-     * @return void
-     */
-    protected function shareWithApp()
-    {
         $this->app->singleton('menu', function () {
             return new Container();
         });
-    }
-
-    /**
-     * Register aliases
-     *
-     * @return void
-     */
-    protected function registerAliases()
-    {
-        $loader = AliasLoader::getInstance();
-        $loader->alias('Menu', 'JumpGate\Menu\MenuFacade');
     }
 
     /**
