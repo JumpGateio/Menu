@@ -30,11 +30,25 @@ class Link implements Jsonable
     public $name;
 
     /**
+     * Parent menu object
+     *
+     * @var Menu
+     */
+    public $mennu;
+
+    /**
      * Link url
      *
      * @var string
      */
     public $url;
+
+    /**
+     * If true, it will be an inertia, non-reloading link.
+     *
+     * @var bool
+     */
+    public $inertia = true;
 
     /**
      * Additional options for links
