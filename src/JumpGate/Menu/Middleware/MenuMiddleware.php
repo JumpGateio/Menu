@@ -29,7 +29,7 @@ class MenuMiddleware
     {
         if ($active !== null) {
             // Laravel 5.1 [middleware => menu:slug]
-            \Menu::setActive($active);
+            app('menu')->etActive($active);
         } else {
             // Laravel 5.0 [middleware => menu, active => slug]
             $route = $request->route();
@@ -38,7 +38,7 @@ class MenuMiddleware
                 $actions = $route->getAction();
 
                 if (array_key_exists('active', $actions)) {
-                    \Menu::setActive($actions['active']);
+                    app('menu')->setActive($actions['active']);
                 }
             }
         }
