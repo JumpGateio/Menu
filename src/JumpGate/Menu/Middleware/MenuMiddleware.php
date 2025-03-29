@@ -29,7 +29,7 @@ class MenuMiddleware
     {
         if ($active !== null) {
             // Laravel 5.1 [middleware => menu:slug]
-            app('menu')->etActive($active);
+            app('menu')->setActive($active);
         } else {
             // Laravel 5.0 [middleware => menu, active => slug]
             $route = $request->route();
