@@ -34,7 +34,7 @@
             "providers": [
                 "JumpGate\\Menu\\MenuServiceProvider"
             ],
-            'aliases': {
+            "aliases": {
                 "Menu": "JumpGate\\Menu\\MenuFacade"
             }
         }
