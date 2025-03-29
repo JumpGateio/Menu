@@ -33,7 +33,10 @@
         "laravel": {
             "providers": [
                 "JumpGate\\Menu\\MenuServiceProvider"
-            ]
+            ],
+            'aliases': {
+                "Menu": "JumpGate\\Menu\\MenuFacade"
+            }
         }
     },
     "minimum-stability": "stable"
