@@ -1,4 +1,4 @@
-<?php
+`<?php
 
 namespace JumpGate\Menu;
 
@@ -31,6 +31,11 @@ class DropDown implements Jsonable
      * @var bool
      */
     public $activateWithLinks = true;
+
+    /**
+     * @var bool
+     */
+    public bool $right = false;
 
     /**
      * Construct a menu
