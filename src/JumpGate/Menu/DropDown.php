@@ -28,6 +28,11 @@ class DropDown implements Jsonable
     public $name;
 
     /**
+     * @var string|null
+     */
+    public $icon = null;
+
+    /**
      * @var bool
      */
     public $activateWithLinks = true;
