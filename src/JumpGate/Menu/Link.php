@@ -30,6 +30,11 @@ class Link implements Jsonable
     public $name;
 
     /**
+     * @var string|null
+     */
+    public $icon = null;
+
+    /**
      * Parent menu object
      *
      * @var Menu
